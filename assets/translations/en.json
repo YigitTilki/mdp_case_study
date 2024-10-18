@@ -1,0 +1,12 @@
+{
+    "auth": {
+        "welcome": "Welcome",
+        "please_enter_credentials": "Please enter your credentials to login.",
+        "login": "Login",
+        "register": "Register",
+        "email": "Email",
+        "password": "Password",
+        "forgot_password": "Forgot Password ?",
+        "remember_me": "Remember Me"
+    }
+}

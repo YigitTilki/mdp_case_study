@@ -1,0 +1,12 @@
+{
+    "auth": {
+        "welcome": "Hoş Geldiniz",
+        "please_enter_credentials": "Lütfen giriş yapmak için bilgilerinizi giriniz.",
+        "login": "Giriş",
+        "register": "Kayıt Ol",
+        "email": "Email",
+        "password": "Şifre",
+        "forgot_password": "Şifremi Unuttum ?",
+        "remember_me": "Beni Hatırla"
+    }
+}
