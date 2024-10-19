@@ -8,5 +8,14 @@
         "password": "Şifre",
         "forgot_password": "Şifremi Unuttum ?",
         "remember_me": "Beni Hatırla"
+    },
+    "home": {
+        "home": "Ana Sayfa",
+        "popular_products": "Popüler Ürünler",
+        "see_all": "Tümünü Gör"
+    },
+    "products": {
+        "products": "Ürünler",
+        "end": "Son"
     }
 }

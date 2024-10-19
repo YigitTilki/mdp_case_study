@@ -10,5 +10,12 @@ abstract class  LocaleKeys {
   static const auth_forgot_password = 'auth.forgot_password';
   static const auth_remember_me = 'auth.remember_me';
   static const auth = 'auth';
+  static const home_home = 'home.home';
+  static const home_popular_products = 'home.popular_products';
+  static const home_see_all = 'home.see_all';
+  static const home = 'home';
+  static const products_products = 'products.products';
+  static const products_end = 'products.end';
+  static const products = 'products';
 
 }

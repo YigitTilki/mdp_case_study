@@ -8,5 +8,14 @@
         "password": "Password",
         "forgot_password": "Forgot Password ?",
         "remember_me": "Remember Me"
+    },
+    "home": {
+        "home": "Home",
+        "popular_products": "Popular Products",
+        "see_all": "See All"
+    },
+    "products": {
+        "products": "Products",
+        "end": "End"
     }
 }
