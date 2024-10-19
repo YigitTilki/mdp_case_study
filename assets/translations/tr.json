@@ -17,5 +17,19 @@
     "products": {
         "products": "Ürünler",
         "end": "Son"
+    },
+    "profile": {
+        "first_name": "Ad",
+        "last_name": "Soyad",
+        "user_name": "Kullanıcı Adı",
+        "email": "E-Posta",
+        "gender": "Cinsiyet",
+        "change_language": "Dili Değiştir",
+        "logout": "Çıkış Yap"
+    },
+    "languageModal": {
+        "select_language": "Dil Seçimi",
+        "turkish": "Türkçe",
+        "english": "İngilizce"
     }
 }

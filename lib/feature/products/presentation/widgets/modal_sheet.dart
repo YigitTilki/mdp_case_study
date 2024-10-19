@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp_case_study/feature/auth/presentation/widgets/custom_text_form_field.dart';
 import 'package:mdp_case_study/feature/products/application/products_view_model.dart';
 import 'package:mdp_case_study/feature/products/domain/product.dart';
-import 'package:mdp_case_study/product/navigation/app_router.dart';
 import 'package:mdp_case_study/product/widgets/app_padding.dart';
+import 'package:mdp_case_study/product/widgets/loading_indicator.dart';
 
 class ModalSheet extends ConsumerStatefulWidget {
   const ModalSheet({required this.product, super.key});
@@ -44,7 +44,10 @@ class _ModalSheetState extends ConsumerState<ModalSheet> {
         children: [
           Text(
             widget.product.title,
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           const SizedBox(height: 10),
           Text(
@@ -55,26 +58,29 @@ class _ModalSheetState extends ConsumerState<ModalSheet> {
           Text(widget.product.description),
           const SizedBox(height: 20),
           CustomTextFormField(controller: _titleController),
-          ElevatedButton(
-            onPressed: () async {
-              final response = await ref
-                  .read(productsNotifierProvider.notifier)
-                  .updateProduct(
-                    widget.product.id,
-                    _titleController.text,
-                  );
+          if (state.isLoading)
+            const LoadingIndicator()
+          else
+            ElevatedButton(
+              onPressed: () async {
+                final response = await ref
+                    .read(productsNotifierProvider.notifier)
+                    .updateProduct(
+                      widget.product.id,
+                      _titleController.text,
+                    );
 
-              if (context.mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(response),
-                  ),
-                );
-                await context.router.maybePop();
-              }
-            },
-            child: const Text('Close'),
-          ),
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(response),
+                    ),
+                  );
+                  await context.router.maybePop();
+                }
+              },
+              child: const Text('Close'),
+            ),
         ],
       ),
     );

@@ -17,5 +17,19 @@
     "products": {
         "products": "Products",
         "end": "End"
+    },
+    "profile": {
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "user_name": "Username",
+        "email": "E-Mail",
+        "gender": "Gender",
+        "change_language": "Change Language",
+        "logout": "Logout"
+    },
+    "languageModal": {
+        "select_language": "Select Language",
+        "turkish": "Turkish",
+        "english": "English"
     }
 }
