@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp_case_study/feature/auth/view/login/login_view.dart';
 import 'package:mdp_case_study/product/navigation/app_router.dart';
-import 'package:mdp_case_study/product/state/auth_view_model.dart';
+import 'package:mdp_case_study/product/state/auth/auth_view_model.dart';
 
 mixin LoginViewMixin on ConsumerState<LoginView> {
   final emailController = TextEditingController();

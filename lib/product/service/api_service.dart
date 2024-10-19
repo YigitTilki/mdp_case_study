@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:mdp_case_study/product/model/login_request_model.dart';
+import 'package:mdp_case_study/product/model/product.dart';
 import 'package:mdp_case_study/product/model/user.dart';
 import 'package:mdp_case_study/product/service/base/service.dart';
 
@@ -48,6 +49,61 @@ class ApiService extends Service {
       }
     } catch (e) {
       print('Login request error: $e');
+      return null;
+    }
+  }
+
+  Future<List<Product>?> fetchProducts({int limit = 10}) async {
+    try {
+      final response = await _dio.get<Map<String, dynamic>>(
+        '/products',
+        queryParameters: {'limit': limit},
+      );
+
+      if (response.statusCode == 200) {
+        final productsJson = response.data!['products'] as List<dynamic>;
+
+        return productsJson
+            .map((json) => Product.fromJson(json as Map<String, dynamic>))
+            .toList();
+      } else {
+        print('Fetch products failed: ${response.statusCode}');
+        return null;
+      }
+    } catch (e) {
+      print('Fetch products request error: $e');
+      return null;
+    }
+  }
+
+  Future<List<Product>?> fetchPaginationProducts({
+    int limit = 10,
+    int skip = 0,
+  }) async {
+    try {
+      final response = await _dio.get<dynamic>(
+        '/products',
+        queryParameters: {
+          'limit': limit,
+          'skip': skip,
+          'select': 'title,price,description,images',
+        },
+      );
+
+      print('API Response: ${response.data}');
+
+      if (response.statusCode == 200) {
+        final productsJson = response.data['products'] as List<dynamic>;
+
+        return productsJson
+            .map((json) => Product.fromJson(json as Map<String, dynamic>))
+            .toList();
+      } else {
+        print('Fetch products failed: ${response.statusCode}');
+        return null;
+      }
+    } catch (e) {
+      print('Fetch products request error: $e');
       return null;
     }
   }

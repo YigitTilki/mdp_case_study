@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp_case_study/product/model/login_request_model.dart';
 import 'package:mdp_case_study/product/service/api_service.dart';
-import 'package:mdp_case_study/product/state/auth_state.dart';
+import 'package:mdp_case_study/product/state/auth/auth_state.dart';
 import 'package:mdp_case_study/product/state/base/base_notifier.dart';
 
 final authNotifierProvider =

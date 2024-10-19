@@ -5,7 +5,7 @@ import 'package:mdp_case_study/feature/auth/view/login/login_view_mixin.dart';
 import 'package:mdp_case_study/feature/auth/widgets/custom_text_form_field.dart';
 import 'package:mdp_case_study/feature/auth/widgets/top_field_text.dart';
 import 'package:mdp_case_study/product/init/languages/locale_keys.g.dart';
-import 'package:mdp_case_study/product/state/auth_view_model.dart';
+import 'package:mdp_case_study/product/state/auth/auth_view_model.dart';
 import 'package:mdp_case_study/product/widgets/app_spacer.dart';
 
 class LoginView extends ConsumerStatefulWidget {
