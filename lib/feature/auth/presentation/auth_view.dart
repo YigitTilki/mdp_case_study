@@ -2,8 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:mdp_case_study/feature/auth/presentation/login/login_view.dart';
+import 'package:mdp_case_study/feature/auth/presentation/widgets/onboarding_titles.dart';
+import 'package:mdp_case_study/product/constants/app_colors.dart';
 import 'package:mdp_case_study/product/init/languages/locale_keys.g.dart';
 
 @RoutePage()
@@ -15,38 +16,15 @@ class AuthView extends ConsumerWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: const Color.fromRGBO(13, 13, 27, 1),
+        backgroundColor: AppColors.loginBackground,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox.shrink(),
-            Padding(
-              padding: const EdgeInsets.all(32),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SvgPicture.asset('assets/images/logo.svg'),
-                  const SizedBox(height: 24),
-                  Text(
-                    LocaleKeys.auth_welcome.tr(),
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 32,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    LocaleKeys.auth_please_enter_credentials.tr(),
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ],
-              ),
+            const Padding(
+              padding: EdgeInsets.all(32),
+              child: OnboardingTitles(),
             ),
             Container(
               height: 430,

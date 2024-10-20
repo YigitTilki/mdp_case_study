@@ -8,4 +8,5 @@ final class AppColors {
   static Color labelGreyColor = const Color.fromRGBO(124, 122, 122, 1);
   static Color redColor = const Color.fromRGBO(255, 86, 72, 1);
   static Color whiteColor = const Color.fromRGBO(255, 255, 255, 1);
+  static Color loginBackground = const Color.fromRGBO(13, 13, 27, 1);
 }

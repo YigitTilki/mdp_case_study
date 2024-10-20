@@ -12,10 +12,10 @@ class AuthService extends BaseService {
       if (response.statusCode == 200) {
         return User.fromJson(response.data! as Map<String, dynamic>);
       } else {
-        print('Login failed: ${response.statusCode}');
+        logger.d('Login failed: ${response.statusCode}');
       }
     } catch (e) {
-      print('Login request error: $e');
+      logger.d('Login request error: $e');
     }
     return null;
   }

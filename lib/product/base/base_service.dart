@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:logger/logger.dart';
 
 class BaseService {
   BaseService()
@@ -15,19 +16,20 @@ class BaseService {
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {
-          print('Requesting: ${options.method} ${options.path}');
+          logger.d('Requesting: ${options.method} ${options.path}');
           return handler.next(options);
         },
         onResponse: (response, handler) {
-          print('Response: ${response.statusCode} ${response.data}');
+          logger.d('Response: ${response.statusCode} ${response.data}');
           return handler.next(response);
         },
         onError: (DioException e, handler) {
-          print('Error occurred: ${e.message}');
+          logger.d('Error occurred: ${e.message}');
           return handler.next(e);
         },
       ),
     );
   }
   final Dio dio;
+  final Logger logger = Logger();
 }
