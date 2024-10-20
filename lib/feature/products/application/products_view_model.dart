@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp_case_study/feature/products/data/product_service.dart';
 import 'package:mdp_case_study/feature/products/domain/products_state.dart';
-import 'package:mdp_case_study/product/state/base_notifier.dart';
+import 'package:mdp_case_study/product/base/base_notifier.dart';
 
 final productsNotifierProvider =
     StateNotifierProvider<ProductsViewModel, ProductsState>((ref) {

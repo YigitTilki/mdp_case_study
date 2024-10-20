@@ -5,11 +5,13 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mdp_case_study/feature/auth/application/auth_view_model.dart';
+import 'package:mdp_case_study/product/manager/shared_pref_manager.dart';
 import 'package:mdp_case_study/feature/home/presentation/widgets/profile_avatar.dart';
 import 'package:mdp_case_study/feature/profile/presentation/widgets/info_widget.dart';
 import 'package:mdp_case_study/feature/widgets/language_modal_sheet.dart';
 import 'package:mdp_case_study/product/constants/app_colors.dart';
 import 'package:mdp_case_study/product/init/languages/locale_keys.g.dart';
+import 'package:mdp_case_study/product/navigation/app_router.dart';
 import 'package:mdp_case_study/product/widgets/app_padding.dart';
 import 'package:mdp_case_study/product/widgets/app_spacer.dart';
 
@@ -89,7 +91,14 @@ class ProfileView extends ConsumerWidget {
                 ),
                 const Divider(),
                 InkWell(
-                  onTap: () {},
+                  onTap: () async {
+                    await SharedPrefManager().clearCredentials();
+                    ref
+                        .read(authNotifierProvider.notifier)
+                        .changeRememberMe(value: false);
+                    if (!context.mounted) return;
+                    await context.router.replaceAll([const AuthRoute()]);
+                  },
                   child: SizedBox(
                     height: 30.h,
                     width: double.infinity,

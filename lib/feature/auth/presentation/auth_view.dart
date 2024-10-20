@@ -89,7 +89,7 @@ class AuthView extends ConsumerWidget {
                       child: TabBarView(
                         children: [
                           LoginView(),
-                          Text('sfls'),
+                          Center(child: Text('Not implemented')),
                         ],
                       ),
                     ),

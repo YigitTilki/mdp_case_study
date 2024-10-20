@@ -9,6 +9,12 @@ mixin _HomeViewMixin on ConsumerState<HomeView> {
     });
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    context.locale;
+  }
+
   Future<void> _fetchProducts() async {
     if (!mounted) return;
 

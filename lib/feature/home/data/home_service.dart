@@ -1,5 +1,5 @@
 import 'package:mdp_case_study/feature/products/domain/product.dart';
-import 'package:mdp_case_study/product/service/base_service.dart';
+import 'package:mdp_case_study/product/base/base_service.dart';
 
 class HomeService extends BaseService {
   Future<List<Product>?> fetchProducts({int limit = 10}) async {

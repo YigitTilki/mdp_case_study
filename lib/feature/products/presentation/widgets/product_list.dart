@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp_case_study/feature/products/application/products_view_model.dart';
-import 'package:mdp_case_study/feature/products/presentation/widgets/modal_sheet.dart';
+import 'package:mdp_case_study/feature/widgets/product_modal_sheet.dart';
 import 'package:mdp_case_study/feature/products/presentation/widgets/product_container.dart';
 import 'package:mdp_case_study/product/widgets/app_padding.dart';
 
@@ -26,7 +26,7 @@ class ProductList extends ConsumerWidget {
             padding: const EdgeInsets.all(8),
             child: InkWell(
               onTap: () {
-                ModalSheet.show(context, product);
+                ProductModalSheet.show(context, product);
               },
               child: ProductContainer(product: product),
             ),

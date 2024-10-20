@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mdp_case_study/feature/home/data/home_service.dart';
 import 'package:mdp_case_study/feature/home/domain/home_state.dart';
-import 'package:mdp_case_study/product/state/base_notifier.dart';
+import 'package:mdp_case_study/product/base/base_notifier.dart';
 
 final homeNotifierProvider =
     StateNotifierProvider<HomeViewModel, HomeState>((ref) {

@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:mdp_case_study/feature/products/domain/product.dart';
-import 'package:mdp_case_study/product/service/base_service.dart';
+import 'package:mdp_case_study/product/base/base_service.dart';
+import 'package:mdp_case_study/product/init/languages/locale_keys.g.dart';
 
 class ProductService extends BaseService {
   Future<List<Product>?> fetchPaginationProducts({
@@ -41,10 +43,10 @@ class ProductService extends BaseService {
 
       if (response.statusCode == 200) {
         print('Product title updated successfully');
-        return 'Product updated successfully! Status Code: ${response.statusCode}';
+        return '${LocaleKeys.validation_product_updated_successfully.tr()}: ${response.statusCode}';
       } else {
         print('Product title update failed: ${response.statusCode}');
-        return 'Failed to update product: ${response.statusCode}';
+        return '${LocaleKeys.validation_failed_update_product.tr()}: ${response.statusCode}';
       }
     } catch (exception) {
       print(exception);
