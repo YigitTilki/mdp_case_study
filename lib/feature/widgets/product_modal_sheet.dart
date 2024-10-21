@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mdp_case_study/feature/auth/presentation/widgets/custom_text_form_field.dart';
 import 'package:mdp_case_study/feature/auth/presentation/widgets/top_field_text.dart';
 import 'package:mdp_case_study/feature/products/application/products_view_model.dart';
@@ -32,7 +33,7 @@ class ProductModalSheet extends ConsumerWidget {
   }
 
   final TextEditingController _titleController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+  static final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -45,7 +46,12 @@ class ProductModalSheet extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomCachedNetworkImage(imageUrl: product.image),
+          Align(
+            child: CustomCachedNetworkImage(
+              imageUrl: product.image,
+              size: Size(200.w, 200.h),
+            ),
+          ),
           Text(
             product.title,
             style: TextStyle(
