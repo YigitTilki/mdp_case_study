@@ -8,5 +8,39 @@
         "password": "Şifre",
         "forgot_password": "Şifremi Unuttum ?",
         "remember_me": "Beni Hatırla"
+    },
+    "products": {
+        "products": "Ürünler",
+        "end": "Son",
+        "title": "Ürün Adı",
+        "change_title": "Ürün Adını Değiştir"
+    },
+    "profile": {
+        "first_name": "Ad",
+        "last_name": "Soyad",
+        "user_name": "Kullanıcı Adı",
+        "email": "E-Posta",
+        "gender": "Cinsiyet",
+        "change_language": "Dili Değiştir",
+        "logout": "Çıkış Yap"
+    },
+    "languageModal": {
+        "select_language": "Dil Seçimi",
+        "turkish": "Türkçe",
+        "english": "İngilizce"
+    },
+    "home": {
+        "home": "Ana Sayfa",
+        "popular_products": "Popüler Ürünler",
+        "see_all": "Tümünü Gör"
+    },
+    "validation": {
+        "email_cannot_empty": "E-posta boş bırakılamaz",
+        "enter_valid_email": "Geçerli e-posta adresi girin",
+        "password_cannot_empty": "Şifre boş bırakılamaz",
+        "password_must_six": "Şifre en az 6 karakter olmalı",
+        "title_cannot_empty": "Ürün adı boş bırakılamaz",
+        "product_updated_successfully": "Ürün adı başarı ile güncellendi! Kod",
+        "failed_update_product": "Ürün adı güncellenirken hata oluştu"
     }
 }

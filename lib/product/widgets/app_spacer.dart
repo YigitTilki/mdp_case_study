@@ -9,6 +9,7 @@ final class AppSpacer extends SizedBox {
   AppSpacer.vertical20({super.key}) : super(height: 20.h);
   AppSpacer.vertical25({super.key}) : super(height: 25.h);
   AppSpacer.vertical30({super.key}) : super(height: 30.h);
+  AppSpacer.vertical50({super.key}) : super(height: 50.h);
 
 //Horizontal Space
   AppSpacer.horizontal5({super.key}) : super(width: 5.w);
