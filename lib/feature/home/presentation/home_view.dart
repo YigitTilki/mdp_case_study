@@ -32,8 +32,8 @@ class _HomeViewState extends ConsumerState<HomeView> with _HomeViewMixin {
     final isLoading = ref.watch(homeNotifierProvider).isLoading;
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
-      appBar: const CustomAppBar(
-        title: LocaleKeys.home_home,
+      appBar: CustomAppBar(
+        title: LocaleKeys.home_home.tr(),
       ),
       body: isLoading
           ? const LoadingIndicator()
