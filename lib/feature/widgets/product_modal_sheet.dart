@@ -49,7 +49,6 @@ class ProductModalSheet extends ConsumerWidget {
           Align(
             child: CustomCachedNetworkImage(
               imageUrl: product.image,
-              size: Size(200.w, 200.h),
             ),
           ),
           Text(
