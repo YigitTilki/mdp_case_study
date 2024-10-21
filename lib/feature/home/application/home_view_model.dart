@@ -17,7 +17,11 @@ class HomeViewModel extends BaseNotifier<HomeState> {
     emit(state.copyWith(isLoading: true));
     final products = await _apiService.fetchProducts();
 
-    emit(state.copyWith(productModel: products));
-    emit(state.copyWith(isLoading: false));
+    if (products == null) {
+      emit(state.copyWith(isLoading: false));
+      return;
+    }
+
+    emit(state.copyWith(productModel: products, isLoading: false));
   }
 }

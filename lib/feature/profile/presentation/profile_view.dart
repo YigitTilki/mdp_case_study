@@ -1,16 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mdp_case_study/feature/auth/application/auth_view_model.dart';
-import 'package:mdp_case_study/product/manager/shared_pref_manager.dart';
 import 'package:mdp_case_study/feature/home/presentation/widgets/profile_avatar.dart';
 import 'package:mdp_case_study/feature/profile/presentation/widgets/info_widget.dart';
+import 'package:mdp_case_study/feature/profile/presentation/widgets/profile_button.dart';
 import 'package:mdp_case_study/feature/widgets/language_modal_sheet.dart';
 import 'package:mdp_case_study/product/constants/app_colors.dart';
 import 'package:mdp_case_study/product/init/languages/locale_keys.g.dart';
+import 'package:mdp_case_study/product/manager/shared_pref_manager.dart';
 import 'package:mdp_case_study/product/navigation/app_router.dart';
 import 'package:mdp_case_study/product/widgets/app_padding.dart';
 import 'package:mdp_case_study/product/widgets/app_spacer.dart';
@@ -40,58 +39,39 @@ class ProfileView extends ConsumerWidget {
                 AppSpacer.vertical20(),
                 InfoWidget(
                   header: '${LocaleKeys.profile_first_name.tr()}:',
-                  value: user?.firstName ?? 'Angelica',
+                  value: user?.firstName ?? '',
                 ),
                 AppSpacer.vertical10(),
                 InfoWidget(
                   header: '${LocaleKeys.profile_last_name.tr()}:',
-                  value: user?.lastName ?? 'Angelica',
+                  value: user?.lastName ?? '',
                 ),
                 AppSpacer.vertical10(),
                 InfoWidget(
                   header: '${LocaleKeys.profile_user_name.tr()}:',
-                  value: user?.username ?? 'Emily',
+                  value: user?.username ?? '',
                 ),
                 AppSpacer.vertical10(),
                 InfoWidget(
                   header: '${LocaleKeys.profile_email.tr()}:',
-                  value: user?.email ?? 'Angelica@gmail.com',
+                  value: user?.email ?? '',
                 ),
                 AppSpacer.vertical10(),
                 InfoWidget(
                   header: '${LocaleKeys.profile_gender.tr()}:',
-                  value: user?.gender ?? 'Erkek',
+                  value: user?.gender ?? '',
                 ),
                 AppSpacer.vertical10(),
                 const Divider(),
-                InkWell(
-                  onTap: () {
+                ProfileButton(
+                  onPressed: () {
                     LanguageModalSheet.show(context);
                   },
-                  child: SizedBox(
-                    height: 30.h,
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          LocaleKeys.profile_change_language.tr(),
-                          style: TextStyle(
-                            color: AppColors.labelGreyColor,
-                          ),
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          size: 15,
-                          color: AppColors.labelGreyColor,
-                        ),
-                      ],
-                    ),
-                  ),
+                  title: LocaleKeys.profile_change_language.tr(),
                 ),
                 const Divider(),
-                InkWell(
-                  onTap: () async {
+                ProfileButton(
+                  onPressed: () async {
                     await SharedPrefManager().clearCredentials();
                     ref
                         .read(authNotifierProvider.notifier)
@@ -99,26 +79,7 @@ class ProfileView extends ConsumerWidget {
                     if (!context.mounted) return;
                     await context.router.replaceAll([const AuthRoute()]);
                   },
-                  child: SizedBox(
-                    height: 30.h,
-                    width: double.infinity,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          LocaleKeys.profile_logout.tr(),
-                          style: TextStyle(
-                            color: AppColors.labelGreyColor,
-                          ),
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          size: 15,
-                          color: AppColors.labelGreyColor,
-                        ),
-                      ],
-                    ),
-                  ),
+                  title: LocaleKeys.profile_logout.tr(),
                 ),
                 const Divider(),
               ],

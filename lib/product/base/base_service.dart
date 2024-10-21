@@ -5,12 +5,10 @@ class BaseService {
   BaseService()
       : dio = Dio(
           BaseOptions(
-            baseUrl: 'https://dummyjson.com',
+            baseUrl: _baseUrl,
             connectTimeout: const Duration(seconds: 10),
             receiveTimeout: const Duration(seconds: 10),
-            headers: {
-              'Content-Type': 'application/json',
-            },
+            headers: _headers,
           ),
         ) {
     dio.interceptors.add(
@@ -30,6 +28,30 @@ class BaseService {
       ),
     );
   }
+  static const String _baseUrl = 'https://dummyjson.com';
+  static const Map<String, dynamic> _headers = {
+    'Content-Type': 'application/json',
+  };
   final Dio dio;
   final Logger logger = Logger();
+
+  Future<T?> handleApiCall<T>({
+    required Future<dynamic> Function() request,
+    required T Function(dynamic response) onSuccess,
+    required T? Function() onError,
+  }) async {
+    try {
+      final response = await request() as Response<dynamic>;
+
+      if (response.statusCode == 200) {
+        return onSuccess(response);
+      } else {
+        logger.d('API Error: ${response.statusCode}');
+        return onError();
+      }
+    } catch (e) {
+      logger.d('API Request Error: $e');
+      return onError();
+    }
+  }
 }

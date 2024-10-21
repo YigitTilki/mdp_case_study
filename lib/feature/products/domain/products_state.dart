@@ -10,6 +10,7 @@ class ProductsState extends Equatable {
     this.isLoading = false,
     this.skip = 0,
     this.hasMore = true,
+    this.limit = 10,
   });
 
   final List<Product>? productModel;
@@ -17,6 +18,7 @@ class ProductsState extends Equatable {
   final int skip;
   final bool hasMore;
   final String? response;
+  final int limit;
 
   @override
   List<Object?> get props {
@@ -26,6 +28,7 @@ class ProductsState extends Equatable {
       skip,
       hasMore,
       response,
+      limit,
     ];
   }
 

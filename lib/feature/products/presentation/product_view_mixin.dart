@@ -19,7 +19,7 @@ mixin _ProductViewMixin on ConsumerState<ProductView> {
 
   Future<void> _fetch() async {
     if (!mounted) return;
-    await ref.read(productsNotifierProvider.notifier).fetchProducts(10);
+    await ref.read(productsNotifierProvider.notifier).fetchProducts();
   }
 
   @override

@@ -6,14 +6,11 @@ import 'package:mdp_case_study/product/constants/app_colors.dart';
 import 'package:mdp_case_study/product/init/languages/locale_keys.g.dart';
 import 'package:mdp_case_study/product/init/languages/locales.dart';
 import 'package:mdp_case_study/product/init/languages/product_localization.dart';
+import 'package:mdp_case_study/product/widgets/app_padding.dart';
 import 'package:mdp_case_study/product/widgets/app_spacer.dart';
 
-class LanguageModalSheet extends ConsumerStatefulWidget {
+class LanguageModalSheet extends ConsumerWidget {
   const LanguageModalSheet({super.key});
-
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _LanguageModalSheetState();
 
   static Future<void> show(BuildContext context) async {
     await showModalBottomSheet<void>(
@@ -27,26 +24,25 @@ class LanguageModalSheet extends ConsumerStatefulWidget {
       },
     );
   }
-}
 
-class _LanguageModalSheetState extends ConsumerState<LanguageModalSheet> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        AppSpacer.vertical20(),
-        Text(
-          LocaleKeys.languageModal_select_language.tr(),
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: AppColors.labelGreyColor,
+        AppSpacer.vertical10(),
+        Padding(
+          padding: AppPadding.allMedium(),
+          child: Text(
+            LocaleKeys.languageModal_select_language.tr(),
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: AppColors.labelGreyColor,
+            ),
           ),
         ),
-        AppSpacer.vertical10(),
         const Divider(),
-        AppSpacer.vertical10(),
         InkWell(
           onTap: () {
             ProductLocalization.updateLanguage(
@@ -57,22 +53,23 @@ class _LanguageModalSheetState extends ConsumerState<LanguageModalSheet> {
           },
           child: SizedBox(
             width: double.infinity,
-            child: Text(
-              LocaleKeys.languageModal_turkish.tr(),
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: context.locale == Locales.tr.locale
-                    ? AppColors.primaryTextColor
-                    : AppColors.labelGreyColor,
+            child: Padding(
+              padding: AppPadding.allMedium(),
+              child: Text(
+                LocaleKeys.languageModal_turkish.tr(),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: context.locale == Locales.tr.locale
+                      ? AppColors.primaryTextColor
+                      : AppColors.labelGreyColor,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
           ),
         ),
-        AppSpacer.vertical10(),
         const Divider(),
-        AppSpacer.vertical10(),
         InkWell(
           onTap: () {
             ProductLocalization.updateLanguage(
@@ -83,20 +80,23 @@ class _LanguageModalSheetState extends ConsumerState<LanguageModalSheet> {
           },
           child: SizedBox(
             width: double.infinity,
-            child: Text(
-              LocaleKeys.languageModal_english.tr(),
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: context.locale == Locales.en.locale
-                    ? AppColors.primaryTextColor
-                    : AppColors.labelGreyColor,
+            child: Padding(
+              padding: AppPadding.allMedium(),
+              child: Text(
+                LocaleKeys.languageModal_english.tr(),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: context.locale == Locales.en.locale
+                      ? AppColors.primaryTextColor
+                      : AppColors.labelGreyColor,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
           ),
         ),
-        AppSpacer.vertical50(),
+        AppSpacer.vertical30(),
       ],
     );
   }

@@ -17,13 +17,13 @@ class ProductsViewModel extends BaseNotifier<ProductsState> {
     emit(state.copyWith(isLoading: true));
     final response = await _apiService.updateProductTitle(id, newTitle);
     emit(state.copyWith(response: response, isLoading: false));
-    return response;
+    return response!;
   }
 
-  Future<void> fetchProducts(int limit) async {
+  Future<void> fetchProducts() async {
     emit(state.copyWith(isLoading: true));
     final products = await _apiService.fetchPaginationProducts(
-      limit: limit,
+      limit: state.limit,
       skip: state.skip,
     );
 
@@ -35,7 +35,7 @@ class ProductsViewModel extends BaseNotifier<ProductsState> {
     emit(
       state.copyWith(
         productModel: [...state.productModel ?? [], ...products],
-        skip: state.skip + limit,
+        skip: state.skip + state.limit,
       ),
     );
     emit(state.copyWith(isLoading: false));
