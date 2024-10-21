@@ -54,6 +54,7 @@ class _LoginViewState extends ConsumerState<LoginView> with LoginViewMixin {
                   ),
                   AppSpacer.vertical10(),
                   AuthButton(onPressed: login, title: LocaleKeys.auth_login),
+                  AppSpacer.vertical50(),
                 ],
               ),
             ),

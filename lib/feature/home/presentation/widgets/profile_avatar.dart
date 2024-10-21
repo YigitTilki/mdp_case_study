@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mdp_case_study/product/constants/app_colors.dart';
 import 'package:mdp_case_study/feature/auth/domain/user.dart';
+import 'package:mdp_case_study/product/constants/app_colors.dart';
 import 'package:mdp_case_study/product/widgets/image/custom_cached_network_image.dart';
 
 class ProfileAvatar extends StatelessWidget {

@@ -21,57 +21,65 @@ class AuthView extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox.shrink(),
-            const Padding(
-              padding: EdgeInsets.all(32),
-              child: OnboardingTitles(),
-            ),
-            Container(
-              height: 430,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  topRight: Radius.circular(16),
-                ),
-              ),
+            const Expanded(child: SizedBox.shrink()),
+            const Expanded(
+              flex: 2,
               child: Padding(
-                padding: const EdgeInsets.all(32),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 36,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      padding: const EdgeInsets.all(4),
-                      child: TabBar(
-                        dividerColor: Colors.transparent,
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        indicator: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.white,
-                        ),
-                        labelColor: Colors.black,
-                        unselectedLabelColor: Colors.grey,
-                        tabs: [
-                          Tab(
-                            text: LocaleKeys.auth_login.tr(),
+                padding: EdgeInsets.all(32),
+                child: OnboardingTitles(),
+              ),
+            ),
+            Expanded(
+              flex: 3,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(32),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          height: 36,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade200,
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          Tab(text: LocaleKeys.auth_register.tr()),
-                        ],
+                          padding: const EdgeInsets.all(4),
+                          child: TabBar(
+                            dividerColor: Colors.transparent,
+                            indicatorSize: TabBarIndicatorSize.tab,
+                            indicator: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: Colors.white,
+                            ),
+                            labelColor: Colors.black,
+                            unselectedLabelColor: Colors.grey,
+                            tabs: [
+                              Tab(
+                                text: LocaleKeys.auth_login.tr(),
+                              ),
+                              Tab(text: LocaleKeys.auth_register.tr()),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                    const Expanded(
-                      child: TabBarView(
-                        children: [
-                          LoginView(),
-                          Center(child: Text('Not implemented')),
-                        ],
+                      const Expanded(
+                        flex: 8,
+                        child: TabBarView(
+                          children: [
+                            LoginView(),
+                            Center(child: Text('Not implemented')),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

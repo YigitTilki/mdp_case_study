@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mdp_case_study/product/constants/app_colors.dart';
 import 'package:mdp_case_study/feature/auth/domain/user.dart';
+import 'package:mdp_case_study/product/constants/app_colors.dart';
 
 class UserListTile extends StatelessWidget {
   const UserListTile({required this.user, super.key});
