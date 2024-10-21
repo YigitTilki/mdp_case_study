@@ -19,6 +19,7 @@ class CustomCachedNetworkImage extends StatelessWidget {
       width: size?.width.w,
       height: size?.height.h,
       fit: BoxFit.cover,
+      maxHeightDiskCache: 400,
       imageUrl: imageUrl ?? 'https://via.placeholder.com/300',
       placeholder: (context, url) => Padding(
         padding: AppPadding.allNormal(),
