@@ -1,8 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mdp_case_study/feature/products/domain/product.dart';
 import 'package:mdp_case_study/product/widgets/app_padding.dart';
+import 'package:mdp_case_study/product/widgets/image/custom_cached_network_image.dart';
 
 class ProductContainer extends StatelessWidget {
   const ProductContainer({required this.product, super.key});
@@ -22,7 +22,7 @@ class ProductContainer extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: CachedNetworkImage(
+            child: CustomCachedNetworkImage(
               imageUrl: product.image,
             ),
           ),
