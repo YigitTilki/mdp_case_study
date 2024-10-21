@@ -45,7 +45,7 @@ class AuthView extends ConsumerWidget {
                   child: Column(
                     children: [
                       Container(
-                        height: 30.h,
+                        height: 38.h,
                         decoration: BoxDecoration(
                           color: Colors.grey.shade200,
                           borderRadius: BorderRadius.circular(8),
