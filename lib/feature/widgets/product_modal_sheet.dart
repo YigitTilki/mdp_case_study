@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mdp_case_study/feature/auth/presentation/widgets/custom_text_form_field.dart';
 import 'package:mdp_case_study/feature/auth/presentation/widgets/top_field_text.dart';
 import 'package:mdp_case_study/feature/products/application/products_view_model.dart';
@@ -16,7 +15,7 @@ import 'package:mdp_case_study/product/widgets/image/custom_cached_network_image
 import 'package:mdp_case_study/product/widgets/loading_indicator.dart';
 
 class ProductModalSheet extends ConsumerWidget {
-  ProductModalSheet({required this.product, super.key});
+  const ProductModalSheet({required this.product, super.key});
 
   final Product product;
   static Future<void> show(BuildContext context, Product product) async {
@@ -32,7 +31,7 @@ class ProductModalSheet extends ConsumerWidget {
     );
   }
 
-  final TextEditingController _titleController = TextEditingController();
+  static final _titleController = TextEditingController();
   static final _formKey = GlobalKey<FormState>();
 
   @override
@@ -42,59 +41,62 @@ class ProductModalSheet extends ConsumerWidget {
 
     return Padding(
       padding: AppPadding.allLarge(),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Align(
-            child: CustomCachedNetworkImage(
-              imageUrl: product.image,
-            ),
-          ),
-          Text(
-            product.title,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: AppColors.primaryTextColor,
-            ),
-          ),
-          AppSpacer.vertical10(),
-          Text(
-            '\$${product.price}',
-            style: const TextStyle(fontSize: 18),
-          ),
-          AppSpacer.vertical10(),
-          Text(product.description),
-          AppSpacer.vertical20(),
-          const TopFieldText(title: LocaleKeys.products_title),
-          Form(
-            key: _formKey,
-            child: CustomTextFormField(
-              controller: _titleController,
-              validator: validator.validateTitle,
-            ),
-          ),
-          AppSpacer.vertical20(),
-          if (state.isLoading)
-            const LoadingIndicator()
-          else
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
             Align(
-              alignment: Alignment.centerRight,
-              child: ElevatedButton(
-                onPressed: () async {
-                  if (!_formKey.currentState!.validate()) {
-                    return;
-                  }
-                  await _onPressed(ref, context);
-                },
-                child: Text(
-                  LocaleKeys.products_change_title.tr(),
-                ),
+              child: CustomCachedNetworkImage(
+                imageUrl: product.image,
+                size: const Size(double.infinity, 400),
               ),
             ),
-          AppSpacer.vertical30(),
-        ],
+            Text(
+              product.title,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: AppColors.primaryTextColor,
+              ),
+            ),
+            AppSpacer.vertical10(),
+            Text(
+              '\$${product.price}',
+              style: const TextStyle(fontSize: 18),
+            ),
+            AppSpacer.vertical10(),
+            Text(product.description),
+            AppSpacer.vertical20(),
+            const TopFieldText(title: LocaleKeys.products_title),
+            Form(
+              key: _formKey,
+              child: CustomTextFormField(
+                controller: _titleController,
+                validator: validator.validateTitle,
+              ),
+            ),
+            AppSpacer.vertical20(),
+            if (state.isLoading)
+              const LoadingIndicator()
+            else
+              Align(
+                alignment: Alignment.centerRight,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    if (!_formKey.currentState!.validate()) {
+                      return;
+                    }
+                    await _onPressed(ref, context);
+                  },
+                  child: Text(
+                    LocaleKeys.products_change_title.tr(),
+                  ),
+                ),
+              ),
+            AppSpacer.vertical30(),
+          ],
+        ),
       ),
     );
   }
@@ -105,6 +107,8 @@ class ProductModalSheet extends ConsumerWidget {
               product.id,
               _titleController.text,
             );
+
+    _titleController.clear();
 
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
