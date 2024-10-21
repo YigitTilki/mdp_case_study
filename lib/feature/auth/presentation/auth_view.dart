@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mdp_case_study/feature/auth/presentation/login/login_view.dart';
 import 'package:mdp_case_study/feature/auth/presentation/widgets/onboarding_titles.dart';
 import 'package:mdp_case_study/product/constants/app_colors.dart';
@@ -43,29 +44,28 @@ class AuthView extends ConsumerWidget {
                   padding: const EdgeInsets.all(32),
                   child: Column(
                     children: [
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade200,
+                      Container(
+                        height: 30.h,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        padding: const EdgeInsets.all(4),
+                        child: TabBar(
+                          dividerColor: Colors.transparent,
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          indicator: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
+                            color: Colors.white,
                           ),
-                          padding: const EdgeInsets.all(4),
-                          child: TabBar(
-                            dividerColor: Colors.transparent,
-                            indicatorSize: TabBarIndicatorSize.tab,
-                            indicator: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: Colors.white,
+                          labelColor: Colors.black,
+                          unselectedLabelColor: Colors.grey,
+                          tabs: [
+                            Tab(
+                              text: LocaleKeys.auth_login.tr(),
                             ),
-                            labelColor: Colors.black,
-                            unselectedLabelColor: Colors.grey,
-                            tabs: [
-                              Tab(
-                                text: LocaleKeys.auth_login.tr(),
-                              ),
-                              Tab(text: LocaleKeys.auth_register.tr()),
-                            ],
-                          ),
+                            Tab(text: LocaleKeys.auth_register.tr()),
+                          ],
                         ),
                       ),
                       const Expanded(
